@@ -43,24 +43,24 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="index.html">Home-image</a>
+                                <a href="index.php">Home-image</a>
                             </li>
                             <li>
-                                <a href="index-video.html">Home-video</a>
+                                <a href="index-video.php">Home-video</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="about.html">About us</a>
-                    </li>
-                    <li class="active">
-                        <a href="services.html">Attività</a>
+                        <a href="about.php">About us</a>
                     </li>
                     <li>
+                        <a href="services.php">Attività</a>
+                    </li>
+                    <li class="active">
                         <a href="registrarsi.php">Registrazione campo</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -85,8 +85,8 @@
                                 <label for="branca" class="text-info">branca:</label><br>
                                 <select name="branca">
                                     <option value=""></option>
-                                    <option value="Abruzzo">Lupetti</option>
-                                    <option value="Basilicata">Esploratori</option>
+                                    <option value="Abruzzo">Branco</option>
+                                    <option value="Basilicata">Reparto</option>
                                     <option value="Calabria">Compagnia</option>
                                     <!--<option value="Calabria">Capi</option>-->
                                 </select>
