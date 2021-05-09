@@ -54,7 +54,7 @@
                         <a href="about.html">About us</a>
                     </li>
                     <li class="active">
-                        <a href="services.html">Design Services</a>
+                        <a href="services.html">Attività</a>
                     </li>
                     <li>
                         <a href="registrarsi.php">Registrazione campo</a>
@@ -108,6 +108,40 @@
             </div>
         </div>
     </div>
+
+    <div id="footer">
+        <div class="footerTop">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Box1 -->
+                    <div class="col-md-3 col-sm-3 col-xs-offset-2">
+                        <h5>Contact info:</h5>
+                        <p>Milano</p>
+                        <p>Milano</p>
+                        <p>Phone: 000-000-0000</p>
+                        <p>Email: <a href="mailto:elia.colombo18@gmail.com">elia.colombo18@gmail.com</a></p>
+                    </div>
+
+
+                    <!-- Footer Box2 -->
+                    <div class="col-md-3 col-sm-3">
+                        <h5>Follow us:</h5>
+                        <div class="footerLinkList">
+                            <a href="#">Facebook</a>
+                            <a href="#" class="icons"> Twitter</a>
+                        </div><!-- /footerLinkList -->
+                    </div>
+                    <!-- Footer Box3 -->
+                    <div class="col-md-3 col-sm-3">
+                        <h5>© 2016 Simple living.</h5>
+
+                    </div>
+
+
+                </div><!-- /row -->
+            </div><!-- /container -->
+        </div><!-- /footerTop -->
+    </div><!-- /footer -->
 
     <script type="text/javascript">
 
