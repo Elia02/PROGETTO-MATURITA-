@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,12 +95,20 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="username" class="text-info">Username:</label><br>
-                                <input type="text" name="username" id="username" class="form-control">
+                                <label for="nome" class="text-info">Nome:</label><br>
+                                <input type="text" name="nome" id="nome" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
-                                <input type="text" name="password" id="password" class="form-control">
+                                <label for="cognome" class="text-info">Cognome:</label><br>
+                                <input type="text" name="cognome" id="cognome" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="eta" class="text-info">Età:</label><br>
+                                <input type="Number" name="eta" id="eta" class="form-control" min="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="text-info">email:</label><br>
+                                <input type="text" name="email" id="email" class="form-control">
                             </div>
                             <div class="form-group">
                                 <input type="registrati" name="registrati" class="btn btn-info btn-md" value="registrati">

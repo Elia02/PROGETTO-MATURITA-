@@ -1252,10 +1252,14 @@ img.zoom1-img:hover {
 
   table, td, th {
 	border: 1px solid black;
+	text-align: center;
   }
+
   
   table {
-	width: 100%;
+	width: 90%;
+	margin-left:5%;
+	border: 1px solid black;
 	border-collapse: collapse;
   }
 
@@ -1263,3 +1267,12 @@ img.zoom1-img:hover {
 	 text-align: center;
 }
   
+.noborder{
+	border-right:none;
+	border-left:none;
+	color: red;
+}
+
+.noborder1{
+	border-left:none;
+}

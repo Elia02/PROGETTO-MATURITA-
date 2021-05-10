@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -95,6 +98,7 @@
 
     <table>
         <tr>
+            <th>ORARI</th>
             <th>Lunedì</th>
             <th>Martedì</th>
             <th>Mercoledì</th>
@@ -105,6 +109,18 @@
         </tr>
         <tr>
             <td>ORE 8:00</td>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <th class="noborder">COLAZIONE</th>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <td class="noborder1"></td>
+
+        </tr>
+        <tr>
+            <td>ORE 9:00 (1° attività mattutina)</td>
+            <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
@@ -113,34 +129,8 @@
             <td>ATTIVITA' NON ANCORA INSERITA</td>
         </tr>
         <tr>
-            <td>ORE 9:00</td>
+            <td>ORE 11:00 (2° attività mattutina)</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 10:00</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 11:00</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 12:00</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
@@ -150,6 +140,18 @@
         </tr>
         <tr>
             <td>ORE 13:00</td>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <th class="noborder">PRANZO</th>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <td class="noborder1"></td>
+
+        </tr>
+        <tr>
+            <td>ORE 15:00 (1° attività pomeridiana)</td>
+            <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
@@ -158,43 +160,18 @@
             <td>ATTIVITA' NON ANCORA INSERITA</td>
         </tr>
         <tr>
-            <td>ORE 14:00</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>ORE 17:00 </td>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <th class="noborder">MERENDA</th>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <td class="noborder1"></td>
         </tr>
         <tr>
-            <td>ORE 15:00</td>
+            <td>ORE 18:00 (2° attività pomeridiana)</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 16:00</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 17:00</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 18:00</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
@@ -210,42 +187,28 @@
             <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
             <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>ATTIVITA' NON ANCORA INSERITA</td>
         </tr>
         <tr>
             <td>ORE 20:00</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <th class="noborder">CENA</th>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <td class="noborder1"></td>
+
         </tr>
         <tr>
             <td>ORE 21:00</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 22:00</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 23:00</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <th class="noborder">FUOCO (durata 2 ore)</th>
+            <td class="noborder"></td>
+            <td class="noborder"></td>
+            <td class="noborder1"></td>
         </tr>
     </table>
 
