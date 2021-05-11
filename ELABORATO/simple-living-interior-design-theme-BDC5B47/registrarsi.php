@@ -78,20 +78,50 @@ session_start();
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
+
+                        <form action="connection.php" method="POST">
                             <h3 class="text-center text-info">Register</h3>
                             <div class="form-group">
-                                <label for="sede" class="text-info">SEDE APPARTENENZA:</label><br>
-                                <input type="text" name="sede" id="sede" class="form-control">
+                                <label for="sede_appartenenza" class="text-info">SEDE APPARTENENZA:</label><br>
+                                <select name="sede_appartenenza">
+                                <?php
+
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $dbName = "elaborato";
+
+                                $conn = new mysqli($servername, $username, $password, $dbName);
+                                if ($conn->connect_error)
+                                {
+                                    die("Connection failed: " . $conn->connect_error);
+                                }
+                                
+
+                                    //query per prendere tutte le sedi
+                                    $sql = "SELECT id, Sede FROM sedi_scout";
+                                    $result = $conn->query($sql);
+                                    //ciclo per ogni sede
+                                    if ($result->num_rows > 0) {
+                                        // output data of each row
+                                        echo '<option value="'."0".'">'."".'</option>';
+                                        while($row = $result->fetch_assoc()) {
+                                            echo '<option value="'.$row["id"].'">'.$row["Sede"].'</option>';
+                                            //echo "id: " . $row["id"]. " - Sede: " . $row["Sede"]. "<br>";
+                                        }
+                                    }
+                                        //echo '<option value="$ID_SEDE"'>$NOME</option>';
+                                ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="branca" class="text-info">branca:</label><br>
                                 <select name="branca">
                                     <option value=""></option>
-                                    <option value="Abruzzo">Branco</option>
-                                    <option value="Basilicata">Reparto</option>
-                                    <option value="Calabria">Compagnia</option>
-                                    <!--<option value="Calabria">Capi</option>-->
+                                    <option value="Branco">Branco</option>
+                                    <option value="Reparto">Reparto</option>
+                                    <option value="Compagnia">Compagnia</option>
+                                    <!--<option value="Capi">Capi</option>-->
                                 </select>
                             </div>
                             <div class="form-group">
@@ -111,7 +141,7 @@ session_start();
                                 <input type="text" name="email" id="email" class="form-control">
                             </div>
                             <div class="form-group">
-                                <input type="registrati" name="registrati" class="btn btn-info btn-md" value="registrati">
+                            <input type="submit" name="registrarsi" value="registrarsi" class="btn btn-info btn-md">
                             </div>
                         </form>
                     </div>
@@ -119,6 +149,19 @@ session_start();
             </div>
         </div>
     </div>
+    <?php
+    if (isset($_GET["insertresult"])) {
+        echo "<br>";
+        switch ($_GET["insertresult"]) {
+            case "success":
+                echo "<p style=" . '"' . "color:green" . '"' . ">&nbsp;&nbsp;&nbsp; ISCRIZIONE CONFERMATA";
+                break;
+            case "fail":
+                echo "<p style=" . '"' . "color:red" . '"' . ">errore comunicazione col server<p>";
+                break;
+        }
+    }
+    ?>
 
     <div id="footer">
         <div class="footerTop">
