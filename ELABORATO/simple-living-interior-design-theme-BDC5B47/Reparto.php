@@ -179,16 +179,6 @@ session_start();
             <td>ATTIVITA' NON ANCORA INSERITA</td>
         </tr>
         <tr>
-            <td>ORE 19:00</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
             <td>ORE 20:00</td>
             <td class="noborder"></td>
             <td class="noborder"></td>
