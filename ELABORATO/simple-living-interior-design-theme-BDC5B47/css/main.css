@@ -208,6 +208,14 @@ img.zoom1-img:hover {
 
 
 @media screen and (min-width:768px) {
+A:hover {
+		color: white;
+}
+#movimento_login{
+	text-align: right;
+	margin-left: 95%;
+	font-size: 20px;
+}
 
 .brand {
         margin: 0;

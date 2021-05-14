@@ -61,7 +61,7 @@ include "connessione.php";
                     <li>
                         <a href="services.php">Attività</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="registrarsi.php">Registrazione campo</a>
                     </li>
                     <li>
@@ -81,31 +81,30 @@ include "connessione.php";
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
 
-                        <form action="connection.php" method="POST">
-                            <h3 class="text-center text-info">Register</h3>
+                        <form action="connection.php" method="GET">
+                            <h3 class="text-center text-info">INSERIMENTO ATTIVITA'</h3>
                             <div class="form-group">
-                                <label for="sede_appartenenza" class="text-info">SEDE APPARTENENZA:</label><br>
-                                <select name="sede_appartenenza">
-                                <?php
-                                    //query per prendere tutte le sedi
-                                    $sql = "SELECT id, Sede FROM sedi_scout";
-                                    $result = $conn->query($sql);
-                                    //ciclo per ogni sede
-                                    if ($result->num_rows > 0) {
-                                        // output data of each row
-                                        echo '<option value="'."0".'">'."".'</option>';
-                                        while($row = $result->fetch_assoc()) {
-                                            echo '<option value="'.$row["id"].'">'.$row["Sede"].'</option>';
-                                            //echo "id: " . $row["id"]. " - Sede: " . $row["Sede"]. "<br>";
-                                        }
+                            <label for="psw" class="text-info">quale amministratore sei:</label><br>
+                            <select name="id_amministratoreEs">
+                                <?php 
+                                //query per prendere tutte le branche
+                                $sql = "SELECT id_amministratore, email FROM amministratore";
+                                $result = $conn->query($sql);
+                                //ciclo per ogni sede
+                                if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    echo '<option value="'."0".'">'."".'</option>';
+                                    while($row = $result->fetch_assoc()) {
+                                        echo '<option value="'.$row["id_amministratore"].'">'.$row["email"].'</option>';
+                                        //echo "id_branca: " . $row["id_branca"]. " - Nome_branca: " . $row["Nome_branca"]. "<br>";
                                     }
-                                        //echo '<option value="$ID_SEDE"'>$NOME</option>';
+                                }                                
                                 ?>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="id_brancaEs" class="text-info">branca:</label><br>
-                                <select name="id_brancaEs">
+                            <label for="psw" class="text-info">branca:</label><br>
+                            <select name="id_brancaEs2">
                                 <?php 
                                 //query per prendere tutte le branche
                                 $sql = "SELECT id_branca, Nome_branca FROM branca";
@@ -123,31 +122,11 @@ include "connessione.php";
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="codice_persona" class="text-info">Codice persona:</label><br>
-                                <input type="text" name="codice_persona" id="codice_persona" class="form-control">
+                                <label for="psw" class="text-info">password:</label><br>
+                                <input type="password" name="psw" id="psw" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="nome" class="text-info">Nome:</label><br>
-                                <input type="text" name="nome" id="nome" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="cognome" class="text-info">Cognome:</label><br>
-                                <input type="text" name="cognome" id="cognome" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="codice_fiscale" class="text-info">Codice fiscale:</label><br>
-                                <input type="text" name="codice_fiscale" id="codice_fiscale" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="text-info">email:</label><br>
-                                <input type="text" name="email" id="email" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="patologie" class="text-info">Patologie:(inserire all'interno se si hanno allergie, problemi alimentari,...)</label><br>
-                                <textarea name="patologie" id="patologie" class="form-control"  rows="5"></textarea>
-                            </div>
-                            <div class="form-group">
-                            <input type="submit" name="registrarsi" value="registrarsi" class="btn btn-info btn-md">
+                            <input type="submit" name="login" value="login" class="btn btn-info btn-md">
                             </div>
                         </form>
                     </div>
@@ -163,7 +142,7 @@ include "connessione.php";
                 echo "<p style=" . '"' . "color:green" . '"' . ">&nbsp;&nbsp;&nbsp; ISCRIZIONE CONFERMATA";
                 break;
             case "fail":
-                echo "<p style=" . '"' . "color:red" . '"' . ">errore comunicazione col server<p>";
+                echo "<p style=" . '"' . "color:red" . '"' . ">password o email sbagliata<p>";
                 break;
         }
     }
