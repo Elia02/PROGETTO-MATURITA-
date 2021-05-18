@@ -81,52 +81,64 @@ include "connessione.php";
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
 
-                        <form action="connection.php" method="GET">
+                        <form action="inserimento_attivita.php" method="POST">
                             <h3 class="text-center text-info">INSERIMENTO ATTIVITA'</h3>
                             <div class="form-group">
-                            <label for="psw" class="text-info">quale amministratore sei:</label><br>
-                            <select name="id_amministratoreEs">
-                                <?php 
-                                //query per prendere tutte le branche
-                                $sql = "SELECT id_amministratore, email FROM amministratore";
-                                $result = $conn->query($sql);
-                                //ciclo per ogni sede
-                                if ($result->num_rows > 0) {
-                                    // output data of each row
-                                    echo '<option value="'."0".'">'."".'</option>';
-                                    while($row = $result->fetch_assoc()) {
-                                        echo '<option value="'.$row["id_amministratore"].'">'.$row["email"].'</option>';
-                                        //echo "id_branca: " . $row["id_branca"]. " - Nome_branca: " . $row["Nome_branca"]. "<br>";
-                                    }
-                                }                                
-                                ?>
-                                </select>
+                                <label for="psw" class="text-info">Nome della nuova attività:</label><br>
+                                <input type="text" name="Nome_attivita" id="Nome_attivita" class="form-control">
                             </div>
                             <div class="form-group">
-                            <label for="psw" class="text-info">branca:</label><br>
-                            <select name="id_brancaEs2">
-                                <?php 
-                                //query per prendere tutte le branche
-                                $sql = "SELECT id_branca, Nome_branca FROM branca";
-                                $result = $conn->query($sql);
-                                //ciclo per ogni sede
-                                if ($result->num_rows > 0) {
-                                    // output data of each row
-                                    echo '<option value="'."0".'">'."".'</option>';
-                                    while($row = $result->fetch_assoc()) {
-                                        echo '<option value="'.$row["id_branca"].'">'.$row["Nome_branca"].'</option>';
-                                        //echo "id_branca: " . $row["id_branca"]. " - Nome_branca: " . $row["Nome_branca"]. "<br>";
-                                    }
-                                }                                
-                                ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="psw" class="text-info">password:</label><br>
-                                <input type="password" name="psw" id="psw" class="form-control">
-                            </div>
-                            <div class="form-group">
-                            <input type="submit" name="login" value="login" class="btn btn-info btn-md">
+                                <div class="form-group">
+                                    <label for="psw" class="text-info">in che branca vuoi inserire l'attività:</label><br>
+                                    <select name="id_brancaEs2">
+                                        <?php
+                                        //query per prendere tutte le branche
+                                        $sql = "SELECT id_branca, Nome_branca FROM branca";
+                                        $result = $conn->query($sql);
+                                        //ciclo per ogni sede
+                                        if ($result->num_rows > 0) {
+                                            // output data of each row
+                                            echo '<option value="' . "0" . '">' . "" . '</option>';
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo '<option value="' . $row["id_branca"] . '">' . $row["Nome_branca"] . '</option>';
+                                                //echo "id_branca: " . $row["id_branca"]. " - Nome_branca: " . $row["Nome_branca"]. "<br>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Giorno_settimana" class="text-info">Giorno attività:</label><br>
+                                    <select name="Giorno_settimana">
+                                        <option value=""></option>
+                                        <option value="lunedi">Lunedì</option>
+                                        <option value="martedi">Martedì</option>
+                                        <option value="mercoledi">Mercoledì</option>
+                                        <option value="giovedi">Giovedì</option>
+                                        <option value="venerdi">Venerdì</option>
+                                        <option value="sabato">Sabato</option>
+                                        <option value="domenica">Domenica</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Ore_attivita" class="text-info">Ora:</label><br>
+                                    <select name="Ore_attivita">
+                                        <option value=""></option>
+                                        <option value="9:00">1° attività mattitina (9:00)</option>
+                                        <option value="11:00">2° attività mattitina (11:00)</option>
+                                        <option value="15:00">1° attività pomeridiana (15:00)</option>
+                                        <option value="18:00">2° attività pomeridiana (18:00)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                <label for="spiegazione" class="text-info">Spiegazione attività:</label><br>
+                                <textarea name="spiegazione" id="spiegazione" class="form-control" rows="5"></textarea>
+                                </div>
+
+
+                                <input type="submit" name="inserire" value="inserire" class="btn btn-info btn-md">
                             </div>
                         </form>
                     </div>
@@ -135,14 +147,14 @@ include "connessione.php";
         </div>
     </div>
     <?php
-    if (isset($_GET["insertresult"])) {
+    if (isset($_POST["insertresult"])) {
         echo "<br>";
-        switch ($_GET["insertresult"]) {
+        switch ($_POST["insertresult"]) {
             case "success":
-                echo "<p style=" . '"' . "color:green" . '"' . ">&nbsp;&nbsp;&nbsp; ISCRIZIONE CONFERMATA";
+                echo "<p style=" . '"' . "color:green" . '"' . ">&nbsp;&nbsp;&nbsp; ATTIVITA' INSERITA";
                 break;
             case "fail":
-                echo "<p style=" . '"' . "color:red" . '"' . ">password o email sbagliata<p>";
+                echo "<p style=" . '"' . "color:red" . '"' . ">INSERISCI TUTTI I CAMPI CORRETTAMENTE<p>";
                 break;
         }
     }

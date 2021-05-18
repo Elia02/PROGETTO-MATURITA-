@@ -92,7 +92,7 @@ include "connessione.php";
                                 <input type="password" name="psw" id="psw" class="form-control">
                             </div>
                             <div class="form-group">
-                            <input type="submit" name="login" value="login" class="btn btn-info btn-md">
+                                <input type="submit" name="login" value="login" class="btn btn-info btn-md">
                             </div>
                         </form>
                     </div>

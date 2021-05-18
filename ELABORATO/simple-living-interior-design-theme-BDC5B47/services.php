@@ -32,8 +32,7 @@ session_start();
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -77,7 +76,7 @@ session_start();
 
     <!-- Intro text -->
     <div class="title bg-color-intro">
-    <a href="login_amministratore.php" id="movimento_login"> LOGIN </a>
+        <a href="login_amministratore.php" id="movimento_login"> LOGIN </a>
         <ul class="nav navbar-nav">
             <li>
                 <a href="Branco.php">Branco</a>
@@ -95,14 +94,13 @@ session_start();
 
     <?php
 
-        $loggato = false;
+    $loggato = false;
 
-        if($loggato)
-        {
+    if ($loggato) {
         echo '<div class = "organizzatori">
             <input type="button" name="inserimento" value="inserisci attività" class="btn btn-info btn-md">
         </div>';
-        }
+    }
     ?>
 
     <div id="footer">

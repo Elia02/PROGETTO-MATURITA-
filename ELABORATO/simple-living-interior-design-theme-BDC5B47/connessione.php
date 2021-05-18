@@ -9,4 +9,3 @@ $servername = "localhost";
         {
           die("Connection failed: " . $conn->connect_error);
         }
-?>

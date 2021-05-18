@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 11, 2021 alle 21:42
--- Versione del server: 10.4.18-MariaDB
--- Versione PHP: 7.3.28
+-- Creato il: Mag 18, 2021 alle 18:08
+-- Versione del server: 10.4.16-MariaDB
+-- Versione PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `amministratore`
+--
+
+CREATE TABLE `amministratore` (
+  `id_amministratore` int(11) NOT NULL,
+  `Nome` varchar(50) NOT NULL,
+  `Cognome` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `psw` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `amministratore`
+--
+
+INSERT INTO `amministratore` (`id_amministratore`, `Nome`, `Cognome`, `email`, `psw`) VALUES
+(1, 'elia', 'colombo', 'Elia.colombo@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(2, 'pippo', 'pippo', 'pippo.pippo@gmail.com', '6e6bc4e49dd477ebc98ef4046c067b5f');
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `attivita`
 --
 
@@ -31,9 +53,19 @@ CREATE TABLE `attivita` (
   `id_attivita` int(11) NOT NULL,
   `Nome_attivita` varchar(40) NOT NULL,
   `Giorno_settimana` varchar(20) NOT NULL,
-  `Ore_attivita` date NOT NULL,
-  `id_brancaEs2` int(11) NOT NULL
+  `Ore_attivita` varchar(50) NOT NULL,
+  `id_brancaEs2` int(11) NOT NULL,
+  `spiegazione` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `attivita`
+--
+
+INSERT INTO `attivita` (`id_attivita`, `Nome_attivita`, `Giorno_settimana`, `Ore_attivita`, `id_brancaEs2`, `spiegazione`) VALUES
+(1, 'Roverino', 'lunedi', '9:00', 2, 'Il Gioco consiste nel'),
+(2, 'Costruzione sotto campo', 'mercoledi', '15:00', 2, 'Iniziare costruzione della propria tenda, tavolo, ...'),
+(3, 'Catapulte(costruzione)', 'martedi', '9:00', 2, 'bla bla');
 
 -- --------------------------------------------------------
 
@@ -161,7 +193,7 @@ ALTER TABLE `sedi_scout`
 -- AUTO_INCREMENT per la tabella `attivita`
 --
 ALTER TABLE `attivita`
-  MODIFY `id_attivita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_attivita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `branca`

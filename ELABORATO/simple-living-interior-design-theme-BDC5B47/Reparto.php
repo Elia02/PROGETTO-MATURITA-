@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "connessione.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,8 +33,7 @@ session_start();
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -93,9 +93,22 @@ session_start();
     </div>
     <!-- /intro text -->
 
+    <?php
+    $sql = "SELECT * FROM attivita";
+    $result = $conn->query($sql);
+    ?>
+
+<?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        if ($row["id_brancaEs2"] == 2 && $row["Giorno_settimana"] == "lunedi" && $row["Ore_attivita"] == "9:00") {
+                            echo $row["Nome_attivita"];
+                        }
+                    }
+                }
 
 
-    <table>
+    echo "<table>
         <tr>
             <th>ORARI</th>
             <th>Lunedì</th>
@@ -105,7 +118,8 @@ session_start();
             <th>Venerdì</th>
             <th>Sabato</th>
             <th>Domenica</th>
-        </tr>
+        </tr>"
+?>
         <tr>
             <td>ORE 8:00</td>
             <td class="noborder"></td>
@@ -119,13 +133,14 @@ session_start();
         </tr>
         <tr>
             <td>ORE 9:00 (1° attività mattutina)</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>ORE 11:00 (2° attività mattutina)</td>
@@ -201,7 +216,7 @@ session_start();
         </tr>
     </table>
 
-    <div class = "organizzatori">
+    <div class="organizzatori">
         <input type="button" name="inserimento" value="inserisci attività" class="btn btn-info btn-md">
     </div>
 

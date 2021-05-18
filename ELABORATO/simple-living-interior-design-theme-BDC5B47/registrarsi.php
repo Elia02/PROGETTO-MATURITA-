@@ -86,40 +86,40 @@ include "connessione.php";
                             <div class="form-group">
                                 <label for="sede_appartenenza" class="text-info">SEDE APPARTENENZA:</label><br>
                                 <select name="sede_appartenenza">
-                                <?php
+                                    <?php
                                     //query per prendere tutte le sedi
                                     $sql = "SELECT id, Sede FROM sedi_scout";
                                     $result = $conn->query($sql);
                                     //ciclo per ogni sede
                                     if ($result->num_rows > 0) {
                                         // output data of each row
-                                        echo '<option value="'."0".'">'."".'</option>';
-                                        while($row = $result->fetch_assoc()) {
-                                            echo '<option value="'.$row["id"].'">'.$row["Sede"].'</option>';
+                                        echo '<option value="' . "0" . '">' . "" . '</option>';
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo '<option value="' . $row["id"] . '">' . $row["Sede"] . '</option>';
                                             //echo "id: " . $row["id"]. " - Sede: " . $row["Sede"]. "<br>";
                                         }
                                     }
-                                        //echo '<option value="$ID_SEDE"'>$NOME</option>';
-                                ?>
+                                    //echo '<option value="$ID_SEDE"'>$NOME</option>';
+                                    ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="id_brancaEs" class="text-info">branca:</label><br>
                                 <select name="id_brancaEs">
-                                <?php 
-                                //query per prendere tutte le branche
-                                $sql = "SELECT id_branca, Nome_branca FROM branca";
-                                $result = $conn->query($sql);
-                                //ciclo per ogni sede
-                                if ($result->num_rows > 0) {
-                                    // output data of each row
-                                    echo '<option value="'."0".'">'."".'</option>';
-                                    while($row = $result->fetch_assoc()) {
-                                        echo '<option value="'.$row["id_branca"].'">'.$row["Nome_branca"].'</option>';
-                                        //echo "id_branca: " . $row["id_branca"]. " - Nome_branca: " . $row["Nome_branca"]. "<br>";
+                                    <?php
+                                    //query per prendere tutte le branche
+                                    $sql = "SELECT id_branca, Nome_branca FROM branca";
+                                    $result = $conn->query($sql);
+                                    //ciclo per ogni sede
+                                    if ($result->num_rows > 0) {
+                                        // output data of each row
+                                        echo '<option value="' . "0" . '">' . "" . '</option>';
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo '<option value="' . $row["id_branca"] . '">' . $row["Nome_branca"] . '</option>';
+                                            //echo "id_branca: " . $row["id_branca"]. " - Nome_branca: " . $row["Nome_branca"]. "<br>";
+                                        }
                                     }
-                                }                                
-                                ?>
+                                    ?>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -144,10 +144,10 @@ include "connessione.php";
                             </div>
                             <div class="form-group">
                                 <label for="patologie" class="text-info">Patologie:(inserire all'interno se si hanno allergie, problemi alimentari,...)</label><br>
-                                <textarea name="patologie" id="patologie" class="form-control"  rows="5"></textarea>
+                                <textarea name="patologie" id="patologie" class="form-control" rows="5"></textarea>
                             </div>
                             <div class="form-group">
-                            <input type="submit" name="registrarsi" value="registrarsi" class="btn btn-info btn-md">
+                                <input type="submit" name="registrarsi" value="registrarsi" class="btn btn-info btn-md">
                             </div>
                         </form>
                     </div>
