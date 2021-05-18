@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 18, 2021 alle 18:59
--- Versione del server: 10.4.16-MariaDB
--- Versione PHP: 7.4.12
+-- Creato il: Mag 18, 2021 alle 23:06
+-- Versione del server: 10.4.18-MariaDB
+-- Versione PHP: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,19 +53,11 @@ CREATE TABLE `attivita` (
   `id_attivita` int(11) NOT NULL,
   `Nome_attivita` varchar(40) NOT NULL,
   `Giorno_settimana` varchar(20) NOT NULL,
-  `Ore_attivita` varchar(50) NOT NULL,
+  `Ore_attivita` date NOT NULL,
   `id_brancaEs2` int(11) NOT NULL,
+  `id_amministratoreEs` int(11) NOT NULL,
   `spiegazione` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dump dei dati per la tabella `attivita`
---
-
-INSERT INTO `attivita` (`id_attivita`, `Nome_attivita`, `Giorno_settimana`, `Ore_attivita`, `id_brancaEs2`, `spiegazione`) VALUES
-(1, 'Roverino', 'lunedi', '9:00', 2, 'Il Gioco consiste nel'),
-(2, 'Costruzione sotto campo', 'mercoledi', '15:00', 2, 'Iniziare costruzione della propria tenda, tavolo, ...'),
-(3, 'Catapulte(costruzione)', 'martedi', '9:00', 2, 'bla bla');
 
 -- --------------------------------------------------------
 
@@ -95,11 +87,13 @@ INSERT INTO `branca` (`id_branca`, `Nome_branca`) VALUES
 
 CREATE TABLE `iscritti` (
   `id_iscritti` int(11) NOT NULL,
+  `codice_persona` varchar(10) NOT NULL,
   `sede_appartenenza` int(11) NOT NULL,
   `id_brancaEs` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(20) NOT NULL,
-  `eta` int(11) NOT NULL,
+  `codice_fiscale` varchar(16) NOT NULL,
+  `patologie` varchar(100) NOT NULL,
   `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -160,10 +154,18 @@ INSERT INTO `sedi_scout` (`id`, `Sede`, `provincia`, `email`) VALUES
 --
 
 --
+-- Indici per le tabelle `amministratore`
+--
+ALTER TABLE `amministratore`
+  ADD PRIMARY KEY (`id_amministratore`);
+
+--
 -- Indici per le tabelle `attivita`
 --
 ALTER TABLE `attivita`
-  ADD PRIMARY KEY (`id_attivita`);
+  ADD PRIMARY KEY (`id_attivita`),
+  ADD KEY `id_brancaEs2` (`id_brancaEs2`),
+  ADD KEY `id_amministratoreEs` (`id_amministratoreEs`);
 
 --
 -- Indici per le tabelle `branca`
@@ -190,10 +192,16 @@ ALTER TABLE `sedi_scout`
 --
 
 --
+-- AUTO_INCREMENT per la tabella `amministratore`
+--
+ALTER TABLE `amministratore`
+  MODIFY `id_amministratore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT per la tabella `attivita`
 --
 ALTER TABLE `attivita`
-  MODIFY `id_attivita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_attivita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `branca`
@@ -205,7 +213,7 @@ ALTER TABLE `branca`
 -- AUTO_INCREMENT per la tabella `iscritti`
 --
 ALTER TABLE `iscritti`
-  MODIFY `id_iscritti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_iscritti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT per la tabella `sedi_scout`
@@ -216,6 +224,13 @@ ALTER TABLE `sedi_scout`
 --
 -- Limiti per le tabelle scaricate
 --
+
+--
+-- Limiti per la tabella `attivita`
+--
+ALTER TABLE `attivita`
+  ADD CONSTRAINT `attivita_ibfk_1` FOREIGN KEY (`id_brancaEs2`) REFERENCES `branca` (`id_branca`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `attivita_ibfk_2` FOREIGN KEY (`id_amministratoreEs`) REFERENCES `amministratore` (`id_amministratore`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `iscritti`
