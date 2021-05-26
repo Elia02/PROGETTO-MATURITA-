@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "connessione.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,6 +77,14 @@ session_start();
 
     <!-- Intro text -->
     <div class="title bg-color-intro">
+    <?php
+            //controllo se è effeuttuato il login
+            if (isset($_SESSION["id_amministratore"])) {
+                echo " <a href=\"logout.php\" id=\"movimento_login\"> logout ammministratore </a>";
+            }else{
+               echo " <a href=\"login_amministratore.php\" id=\"movimento_login\"> login amministratore </a>";
+            }
+    ?>
         <ul class="nav navbar-nav">
             <li>
                 <a href="Branco.php">Branco</a>
@@ -92,8 +101,22 @@ session_start();
     </div>
     <!-- /intro text -->
 
+    <?php
+    //query per tabella con filtri
+    $sql_Ore9 = "SELECT Nome_attivita, Giorno_settimana FROM attivita WHERE Ore_attivita = '9:00:00' AND `id_brancaEs2` = 3";
+    $result_Ore9 = $conn->query($sql_Ore9);
 
+    $sql_Ore11 = "SELECT Nome_attivita, Giorno_settimana FROM attivita WHERE Ore_attivita = '11:00:00' AND `id_brancaEs2` = 3";
+    $result_Ore11 = $conn->query($sql_Ore11);
 
+    $sql_Ore15 = "SELECT Nome_attivita, Giorno_settimana FROM attivita WHERE Ore_attivita = '15:00:00' AND `id_brancaEs2` = 3";
+    $result_Ore15 = $conn->query($sql_Ore15);
+
+    $sql_Ore18 = "SELECT Nome_attivita, Giorno_settimana FROM attivita WHERE Ore_attivita = '18:00:00' AND `id_brancaEs2` = 3";
+    $result_Ore18 = $conn->query($sql_Ore18);
+    
+    ?>
+    <!-- tabella -->
     <table>
         <tr>
             <th>ORARI</th>
@@ -104,7 +127,7 @@ session_start();
             <th>Venerdì</th>
             <th>Sabato</th>
             <th>Domenica</th>
-        </tr>
+        </tr>"
         <tr>
             <td>ORE 8:00</td>
             <td class="noborder"></td>
@@ -118,23 +141,285 @@ session_start();
         </tr>
         <tr>
             <td>ORE 9:00 (1° attività mattutina)</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td> 
+            <?php
+            $inserimento = false;
+                if ($result_Ore9->num_rows > 0) {
+                    while ($row = $result_Ore9->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "lunedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore9->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore9->num_rows > 0) {
+                    while ($row = $result_Ore9->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "martedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore9->data_seek(0);
+                ?>
+                </td>
+            <td>            <?php
+            $inserimento = false;
+                if ($result_Ore9->num_rows > 0) {
+                    while ($row = $result_Ore9->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "mercoledi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore9->data_seek(0);
+                ?></td>
+            <td>            <?php
+            $inserimento = false;
+                if ($result_Ore9->num_rows > 0) {
+                    while ($row = $result_Ore9->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "giovedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore9->data_seek(0);
+                ?></td>
+            <td>            
+            <?php
+            $inserimento = false;
+                if ($result_Ore9->num_rows > 0) {
+                    while ($row = $result_Ore9->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "venerdi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore9->data_seek(0);
+                ?>
+                </td>
+            <td>            
+            <?php
+            $inserimento = false;
+                if ($result_Ore9->num_rows > 0) {
+                    while ($row = $result_Ore9->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "sabato") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore9->data_seek(0);
+                ?>
+                </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore9->num_rows > 0) {
+                    while ($row = $result_Ore9->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "domenica") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore9->data_seek(0);
+                ?>
+                </td>
         </tr>
         <tr>
             <td>ORE 11:00 (2° attività mattutina)</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore11->num_rows > 0) {
+                    while ($row = $result_Ore11->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "lunedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore11->data_seek(0);
+                ?>
+                </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore11->num_rows > 0) {
+                    while ($row = $result_Ore11->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "martedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore11->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore11->num_rows > 0) {
+                    while ($row = $result_Ore11->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "mercoledi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore11->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore11->num_rows > 0) {
+                    while ($row = $result_Ore11->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "giovedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore11->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore11->num_rows > 0) {
+                    while ($row = $result_Ore11->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "venerdi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore11->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore11->num_rows > 0) {
+                    while ($row = $result_Ore11->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "sabato") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore11->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore11->num_rows > 0) {
+                    while ($row = $result_Ore11->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "domenica") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore11->data_seek(0);
+                ?>
+            </td>
         </tr>
         <tr>
             <td>ORE 13:00</td>
@@ -149,13 +434,147 @@ session_start();
         </tr>
         <tr>
             <td>ORE 15:00 (1° attività pomeridiana)</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore15->num_rows > 0) {
+                    while ($row = $result_Ore15->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "lunedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore15->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore15->num_rows > 0) {
+                    while ($row = $result_Ore15->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "martedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore15->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore15->num_rows > 0) {
+                    while ($row = $result_Ore15->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "mercoledi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore15->data_seek(0);
+                ?>
+            </td>
+            <td>           
+            <?php
+            $inserimento = false;
+                if ($result_Ore15->num_rows > 0) {
+                    while ($row = $result_Ore15->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "giovedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore15->data_seek(0);
+                ?>
+                </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore15->num_rows > 0) {
+                    while ($row = $result_Ore15->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "venerdi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore15->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore15->num_rows > 0) {
+                    while ($row = $result_Ore15->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "sabato") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore15->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore15->num_rows > 0) {
+                    while ($row = $result_Ore15->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "domenica") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore15->data_seek(0);
+                ?>
+            </td>
         </tr>
         <tr>
             <td>ORE 17:00 </td>
@@ -169,13 +588,144 @@ session_start();
         </tr>
         <tr>
             <td>ORE 18:00 (2° attività pomeridiana)</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>           
+            <?php
+            $inserimento = false;
+                if ($result_Ore18->num_rows > 0) {
+                    while ($row = $result_Ore18->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "lunedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore18->data_seek(0);
+                ?>
+                </td>
+            <td><?php
+            $inserimento = false;
+                if ($result_Ore18->num_rows > 0) {
+                    while ($row = $result_Ore18->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "martedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore18->data_seek(0);
+                ?></td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore18->num_rows > 0) {
+                    while ($row = $result_Ore18->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "mercoledi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore18->data_seek(0);
+                ?>
+                </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore18->num_rows > 0) {
+                    while ($row = $result_Ore18->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "giovedi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore18->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore18->num_rows > 0) {
+                    while ($row = $result_Ore18->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "venerdi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore18->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore18->num_rows > 0) {
+                    while ($row = $result_Ore18->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "sabato") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore18->data_seek(0);
+                ?>
+            </td>
+            <td>
+            <?php
+            $inserimento = false;
+                if ($result_Ore18->num_rows > 0) {
+                    while ($row = $result_Ore18->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "domenica") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore18->data_seek(0);
+                ?>
+            </td>
         </tr>
         <tr>
             <td>ORE 20:00</td>

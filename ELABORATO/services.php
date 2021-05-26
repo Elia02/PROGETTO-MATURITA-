@@ -79,9 +79,9 @@ session_start();
     <?php
             //controllo se è effeuttuato il login
             if (isset($_SESSION["id_amministratore"])) {
-                echo " <a href=\"logout.php\" id=\"movimento_login\"> LOGOUT </a>";
+                echo " <a href=\"logout.php\" id=\"movimento_login\"> logout ammministratore </a>";
             }else{
-               echo " <a href=\"login_amministratore.php\" id=\"movimento_login\"> LOGIN </a>";
+               echo " <a href=\"login_amministratore.php\" id=\"movimento_login\"> login amministratore </a>";
             }
             
 ?>
