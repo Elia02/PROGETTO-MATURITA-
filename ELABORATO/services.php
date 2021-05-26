@@ -5,7 +5,7 @@ session_start();
 <html>
 
 <head>
-    <title>Interior design - Services</title>
+    <title>attività</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,133 +76,39 @@ session_start();
 
     <!-- Intro text -->
     <div class="title bg-color-intro">
+    <?php
+            //controllo se è effeuttuato il login
+            if (isset($_SESSION["id_amministratore"])) {
+                echo " <a href=\"logout.php\" id=\"movimento_login\"> LOGOUT </a>";
+            }else{
+               echo " <a href=\"login_amministratore.php\" id=\"movimento_login\"> LOGIN </a>";
+            }
+            
+?>
+        
         <ul class="nav navbar-nav">
             <li>
                 <a href="Branco.php">Branco</a>
             </li>
-            <li>
+            <li class="active">
                 <a href="Reparto.php">Reparto</a>
             </li>
-            <li class="active">
+            <li>
                 <a href="Compagnia.php">Compagnia</a>
             </li>
         </ul>
         <div class="hr"></div>
-        <h1>COMPAGNIA</h1>
     </div>
     <!-- /intro text -->
 
-
-
-    <table>
-        <tr>
-            <th>ORARI</th>
-            <th>Lunedì</th>
-            <th>Martedì</th>
-            <th>Mercoledì</th>
-            <th>Giovedì</th>
-            <th>Venerdì</th>
-            <th>Sabato</th>
-            <th>Domenica</th>
-        </tr>
-        <tr>
-            <td>ORE 8:00</td>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <th class="noborder">COLAZIONE</th>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <td class="noborder1"></td>
-
-        </tr>
-        <tr>
-            <td>ORE 9:00 (1° attività mattutina)</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 11:00 (2° attività mattutina)</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 13:00</td>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <th class="noborder">PRANZO</th>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <td class="noborder1"></td>
-
-        </tr>
-        <tr>
-            <td>ORE 15:00 (1° attività pomeridiana)</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 17:00 </td>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <th class="noborder">MERENDA</th>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <td class="noborder1"></td>
-        </tr>
-        <tr>
-            <td>ORE 18:00 (2° attività pomeridiana)</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-            <td>ATTIVITA' NON ANCORA INSERITA</td>
-        </tr>
-        <tr>
-            <td>ORE 20:00</td>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <th class="noborder">CENA</th>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <td class="noborder1"></td>
-
-        </tr>
-        <tr>
-            <td>ORE 21:00</td>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <th class="noborder">FUOCO (durata 2 ore)</th>
-            <td class="noborder"></td>
-            <td class="noborder"></td>
-            <td class="noborder1"></td>
-        </tr>
-    </table>
-
-    <div class="organizzatori">
-        <input type="button" name="inserimento" value="inserisci attività" class="btn btn-info btn-md">
-    </div>
+<?php
+            //controllo se è effeuttuato il login
+            if (isset($_SESSION["id_amministratore"])) {
+    echo "<div class=\"organizzatori\">
+        <input type=\"button\" name=\"inserimento\" value=\"inserisci attività\" class=\"btn btn-info btn-md\" onclick=\"window.location.href='aggiungi_attivita.php'\">
+    </div>";
+}           
+?>
 
     <div id="footer">
         <div class="footerTop">

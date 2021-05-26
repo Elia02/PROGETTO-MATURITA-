@@ -201,9 +201,14 @@ session_start();
         </tr>
     </table>
 
-    <div class="organizzatori">
-        <input type="button" name="inserimento" value="inserisci attività" class="btn btn-info btn-md">
-    </div>
+    <?php
+            //controllo se è effeuttuato il login
+            if (isset($_SESSION["id_amministratore"])) {
+    echo "<div class=\"organizzatori\">
+        <input type=\"button\" name=\"inserimento\" value=\"inserisci attività\" class=\"btn btn-info btn-md\" onclick=\"window.location.href='aggiungi_attivita.php'\">
+    </div>";
+}           
+?>
 
     <div id="footer">
         <div class="footerTop">

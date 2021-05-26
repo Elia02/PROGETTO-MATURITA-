@@ -1,4 +1,7 @@
 <?php
+session_start();
+include "connessione.php";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include "connessione.php";
@@ -8,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Ore_attivita = $_POST["Ore_attivita"];
     $id_brancaEs2 = $_POST["id_brancaEs2"];
     $spiegazione = $_POST["spiegazione"];
+    $id_amministratoreEs = $_SESSION["id_amministratore"];
 
     echo "Nome_attivita: " . $Nome_attivita;
     echo "<br>";
@@ -19,11 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<br>";
     echo "spiegazione: " . $spiegazione;
     echo "<br>";
+    echo "Amministratore:" . $id_amministratoreEs;
     echo "<br>";
     echo "<br>";
 
-    $sql = "INSERT INTO `attivita` (`id_attivita`,`Nome_attivita`, `Giorno_settimana`, `Ore_attivita`, `id_brancaEs2`, `spiegazione`)
-        VALUES (DEFAULT,'" . $Nome_attivita . "', '" . $Giorno_settimana . "', '" . $Ore_attivita . "', '" . $id_brancaEs2 . "', '" . $spiegazione . "');";
+    $sql = "INSERT INTO `attivita` (`id_attivita`,`Nome_attivita`, `Giorno_settimana`, `Ore_attivita`, `id_brancaEs2`,`id_amministratoreEs`, `spiegazione`)
+        VALUES (DEFAULT,'" . $Nome_attivita . "', '" . $Giorno_settimana . "', '" . $Ore_attivita . "', '" . $id_brancaEs2 . "','" . $id_amministratoreEs . "', '" . $spiegazione . "');";
 
     //echo $sql;
 
@@ -34,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             `Giorno_settimana` = '" . $Giorno_settimana . "' AND
             `Ore_attivita` = '" . $Ore_attivita . "' AND
             `id_brancaEs2` = '" . $id_brancaEs2 . "' AND
+            `id_amministratoreEs` = '" . $id_amministratoreEs . "' AND
             `spiegazione` = '" . $spiegazione . "';";
 
         $result = $conn->query($sql);

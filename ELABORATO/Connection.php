@@ -75,29 +75,4 @@
         
         exit();
     }
-    if ($_SERVER["REQUEST_METHOD"] == "GET")
-    {
-        include "connessione.php";
-
-        $email = $_GET["email"];
-        $psw = $_GET["psw"];
-        $psw = md5($psw);
-
-        echo "email: ".$email;
-        echo "<br>";
-        echo "psw: ".$psw;
-
-
-        $sql = "SELECT * FROM amministratore WHERE email ='$email' AND psw = '$psw'";
-        $result = $conn->query($sql);
-        echo $sql;
-
-        if ($result->num_rows > 0) {
-                header("Location: aggiungi_attivita.php?");
-            }else{
-                header("Location: login_amministratore.php?insertresult=fail");
-            }
-        
-        exit();
-    }
 ?>

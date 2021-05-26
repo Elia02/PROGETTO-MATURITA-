@@ -1,29 +1,31 @@
 <?php
 session_start();
+include "connessione.php";
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>attività</title>
-
     <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>login-form - Bootsnipp.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Boostrap Core CSS-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/main.css">
 
-
     <!-- Google fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open%20Sans:400,700,600' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-
     <!-- Logo -->
     <div class="brand"><img src="images/logo.png" alt="logo" /></div>
 
@@ -56,7 +58,7 @@ session_start();
                     <li>
                         <a href="about.php">About us</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="services.php">Attività</a>
                     </li>
                     <li>
@@ -73,33 +75,42 @@ session_start();
     </nav>
     <!-- End Header -->
 
+    <div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
 
-    <!-- Intro text -->
-    <div class="title bg-color-intro">
-        <a href="login_amministratore.php" id="movimento_login"> LOGIN </a>
-        <ul class="nav navbar-nav">
-            <li>
-                <a href="Branco.php">Branco</a>
-            </li>
-            <li class="active">
-                <a href="Reparto.php">Reparto</a>
-            </li>
-            <li>
-                <a href="Compagnia.php">Compagnia</a>
-            </li>
-        </ul>
-        <div class="hr"></div>
+                        <form action="login.php" method="POST">
+                            <h3 class="text-center text-info">LOGIN</h3>
+                            <div class="form-group">
+                                <label for="email" class="text-info">email:</label><br>
+                                <input type="text" name="email" id="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="psw" class="text-info">password:</label><br>
+                                <input type="password" name="psw" id="psw" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="login" value="login" class="btn btn-info btn-md">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /intro text -->
-
     <?php
-
-    $loggato = false;
-
-    if ($loggato) {
-        echo '<div class = "organizzatori">
-            <input type="button" name="inserimento" value="inserisci attività" class="btn btn-info btn-md">
-        </div>';
+    if (isset($_GET["insertresult"])) {
+        echo "<br>";
+        switch ($_GET["insertresult"]) {
+            case "success":
+                echo "<p style=" . '"' . "color:green" . '"' . ">&nbsp;&nbsp;&nbsp; ISCRIZIONE CONFERMATA";
+                break;
+            case "fail":
+                echo "<p style=" . '"' . "color:red" . '"' . ">password o email sbagliata<p>";
+                break;
+        }
     }
     ?>
 
@@ -110,10 +121,10 @@ session_start();
                     <!-- Footer Box1 -->
                     <div class="col-md-3 col-sm-3 col-xs-offset-2">
                         <h5>Contact info:</h5>
-                        <p>22 Central Park South</p>
-                        <p> NY 10019</p>
-                        <p>Phone: 212-222-4000</p>
-                        <p>Email: <a href="mailto:simpleliving@office.com">simpleliving@office.com</a></p>
+                        <p>Milano</p>
+                        <p>Milano</p>
+                        <p>Phone: 000-000-0000</p>
+                        <p>Email: <a href="mailto:elia.colombo18@gmail.com">elia.colombo18@gmail.com</a></p>
                     </div>
 
 
@@ -137,19 +148,9 @@ session_start();
         </div><!-- /footerTop -->
     </div><!-- /footer -->
 
+    <script type="text/javascript">
 
-
-
-
-    <!-- jQuery Version 1.11.0 -->
-    <script src="js/jquery-1.11.0.js"></script>
-
-    <!-- Boostrap JS -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Smooth scroll JS -->
-    <script src="js/smoothscroll.js"></script>
-
+    </script>
 </body>
 
 </html>

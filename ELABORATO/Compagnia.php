@@ -1,6 +1,5 @@
 <?php
 session_start();
-include "connessione.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,34 +80,21 @@ include "connessione.php";
             <li>
                 <a href="Branco.php">Branco</a>
             </li>
-            <li class="active">
+            <li>
                 <a href="Reparto.php">Reparto</a>
             </li>
-            <li>
+            <li class="active">
                 <a href="Compagnia.php">Compagnia</a>
             </li>
         </ul>
         <div class="hr"></div>
-        <h1>REPARTO</h1>
+        <h1>COMPAGNIA</h1>
     </div>
     <!-- /intro text -->
 
-    <?php
-    $sql = "SELECT * FROM attivita";
-    $result = $conn->query($sql);
-    ?>
-
-<?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        if ($row["id_brancaEs2"] == 2 && $row["Giorno_settimana"] == "lunedi" && $row["Ore_attivita"] == "9:00") {
-                            echo $row["Nome_attivita"];
-                        }
-                    }
-                }
 
 
-    echo "<table>
+    <table>
         <tr>
             <th>ORARI</th>
             <th>Lunedì</th>
@@ -118,8 +104,7 @@ include "connessione.php";
             <th>Venerdì</th>
             <th>Sabato</th>
             <th>Domenica</th>
-        </tr>"
-?>
+        </tr>
         <tr>
             <td>ORE 8:00</td>
             <td class="noborder"></td>
@@ -133,14 +118,13 @@ include "connessione.php";
         </tr>
         <tr>
             <td>ORE 9:00 (1° attività mattutina)</td>
-            <td>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>ATTIVITA' NON ANCORA INSERITA</td>
+            <td>ATTIVITA' NON ANCORA INSERITA</td>
         </tr>
         <tr>
             <td>ORE 11:00 (2° attività mattutina)</td>
@@ -216,10 +200,16 @@ include "connessione.php";
         </tr>
     </table>
 
-    <div class="organizzatori">
-        <input type="button" name="inserimento" value="inserisci attività" class="btn btn-info btn-md">
-    </div>
-
+    <?php
+            //controllo se è effeuttuato il login
+            if (isset($_SESSION["id_amministratore"])) {
+    echo "<div class=\"organizzatori\">
+        <input type=\"button\" name=\"inserimento\" value=\"inserisci attività\" class=\"btn btn-info btn-md\" onclick=\"window.location.href='aggiungi_attivita.php'\">
+    </div>";
+}           
+?>
+            
+?>
     <div id="footer">
         <div class="footerTop">
             <div class="container">
