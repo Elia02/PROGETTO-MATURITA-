@@ -77,6 +77,14 @@ include "connessione.php";
 
     <!-- Intro text -->
     <div class="title bg-color-intro">
+    <?php
+            //controllo se è effeuttuato il login
+            if (isset($_SESSION["id_amministratore"])) {
+                echo " <a href=\"logout.php\" id=\"movimento_login\"> logout ammministratore </a>";
+            }else{
+               echo " <a href=\"login_amministratore.php\" id=\"movimento_login\"> login amministratore </a>";
+            }
+    ?>
         <ul class="nav navbar-nav">
             <li>
                 <a href="Branco.php">Branco</a>
@@ -425,6 +433,7 @@ include "connessione.php";
         </tr>
         <tr>
             <td>ORE 15:00 (1° attività pomeridiana)</td>
+            
             <td>
             <?php
             $inserimento = false;
@@ -466,14 +475,31 @@ include "connessione.php";
                 ?>
             </td>
             <td>
-            
+            <?php
+            $inserimento = false;
+                if ($result_Ore15->num_rows > 0) {
+                    while ($row = $result_Ore15->fetch_assoc()) {
+                        if ($row["Giorno_settimana"] == "mercoledi") {
+                            echo $row["Nome_attivita"];
+                            $inserimento = true;
+                        }
+                    }
+
+                }
+                if($inserimento == false){
+                    echo "ATTIVITA' NON ANCORA INSERITA";
+                }
+
+                //reset la testina di lettura sul primo record in quanto precendentemente esaurito dal ciclo while
+                $result_Ore15->data_seek(0);
+                ?>
             </td>
             <td>           
             <?php
             $inserimento = false;
                 if ($result_Ore15->num_rows > 0) {
                     while ($row = $result_Ore15->fetch_assoc()) {
-                        if ($row["Giorno_settimana"] == "mercoledi") {
+                        if ($row["Giorno_settimana"] == "giovedi") {
                             echo $row["Nome_attivita"];
                             $inserimento = true;
                         }
@@ -493,7 +519,7 @@ include "connessione.php";
             $inserimento = false;
                 if ($result_Ore15->num_rows > 0) {
                     while ($row = $result_Ore15->fetch_assoc()) {
-                        if ($row["Giorno_settimana"] == "lunedi") {
+                        if ($row["Giorno_settimana"] == "venerdi") {
                             echo $row["Nome_attivita"];
                             $inserimento = true;
                         }
@@ -513,7 +539,7 @@ include "connessione.php";
             $inserimento = false;
                 if ($result_Ore15->num_rows > 0) {
                     while ($row = $result_Ore15->fetch_assoc()) {
-                        if ($row["Giorno_settimana"] == "lunedi") {
+                        if ($row["Giorno_settimana"] == "sabato") {
                             echo $row["Nome_attivita"];
                             $inserimento = true;
                         }
@@ -533,7 +559,7 @@ include "connessione.php";
             $inserimento = false;
                 if ($result_Ore15->num_rows > 0) {
                     while ($row = $result_Ore15->fetch_assoc()) {
-                        if ($row["Giorno_settimana"] == "lunedi") {
+                        if ($row["Giorno_settimana"] == "domenica") {
                             echo $row["Nome_attivita"];
                             $inserimento = true;
                         }
