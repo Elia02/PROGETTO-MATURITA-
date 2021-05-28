@@ -65,6 +65,14 @@ session_start();
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
+                    <li>
+                    <?php
+            //controllo se è effeuttuato il login
+            if (isset($_SESSION["id_amministratore"])) {
+                echo " <a href=\"visualizzazioneUtenti.php\"> Controllo iscrizioni</a>";
+            }
+    ?>
+                    </li>
                 </ul>
             </div>
             <!-- /navbar-collapse -->
